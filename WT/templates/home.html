@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+ {% block content %}
+
+
+
+
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">name_car</th>
+      <th scope="col">price</th>
+      <th scope="col">model</th>
+      <th scope="col">color</th>
+      <th scope="col">picture </th>
+
+      <th scope="col">delete</th>
+      <th scope="col">update</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for car in cars %}
+
+
+
+    <tr>
+<!--      <th scope="row"></th>-->
+
+      <td> <a href="#"> {{car.name}} </a>
+        <small class="text-muted d-block">{{car.price}}</small> </td>
+      <td>{{car.price}}</td>
+      <td>{{car.model}}</td>
+      <td>{{car.color}}</td>
+
+        {% if car.picture %}
+            <td> <img src="{{ car.picture.url }}"></td>
+        {% else %}
+            <td>No image available</td>
+        {% endif %}
+
+
+
+      <td><i class="fa fa-trash" aria-hidden="true"> <a href="{% url 'delete' car.id %}"> delete</a> </i></td>
+        <td>  <a class="a" href="{% url 'update' car.id %}">update </a>
+        </td>
+
+
+    </tr>
+
+    {% endfor %}
+
+      </tbody>
+
+</table>
+
+
+ {% endblock  %}
